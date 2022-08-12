@@ -1,5 +1,7 @@
 import Card from "../models/Card.js";
 export const createCard = async (req,res,next) =>{
+    req.body.dni = req.body.dni.substring(0,8)
+    req.body.userId = req.user.id;
     const newCard = new Card(req.body)
     try {
         const savedCard = await newCard.save()

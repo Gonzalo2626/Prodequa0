@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 const CardSchema = new mongoose.Schema({
     dni:{
         type: 'number',
+        required: true,
     },
     names:{
         type: 'string',

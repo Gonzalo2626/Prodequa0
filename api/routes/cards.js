@@ -1,7 +1,7 @@
 import express from "express";
 import {createCard, updatedCard, deleteCard, getCard, getCards } from "../controllers/card.js"
 import Card from "../models/Card.js";
-import {verifyAdmin} from "../utils.js/verifyToken.js"
+import {verifyAdmin, verifyToken} from "../utils/verifyToken.js"
 
 
 const router = express.Router();
@@ -15,11 +15,11 @@ router.put("/:id", verifyAdmin, updatedCard );
 router.delete("/:id", verifyAdmin, deleteCard)
 //GET
 
-router.get("/:id", getCard);
+router.get("/:id", verifyToken, getCard);
 
 // GET ALL
 
-router.get("/", getCards);
+router.get("/", verifyToken, getCards);
 
 
 export default router
